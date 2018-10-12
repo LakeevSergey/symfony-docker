@@ -1,0 +1,14 @@
+{
+  "name": "symfony-docker",
+  "license": "MIT",
+  "description": "Symfony with docker and vue",
+  "repository": "https://github.com/LakeevSergey/symfony-docker.git",
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.20.1",
+    "webpack-notifier": "^1.7.0"
+  },
+  "dependencies": {
+    "vue": "^2.5.17",
+    "vuex": "^3.0.1"
+  }
+}
