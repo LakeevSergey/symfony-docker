@@ -11,7 +11,9 @@ services:
     depends_on:
       - php
   php:
-    image: php:7.2-fpm
+    build:
+      context: .
+      dockerfile: ./docker/php
     volumes:
       - .:/var/www/site
   db:
