@@ -16,6 +16,8 @@ services:
       dockerfile: ./docker/php
     volumes:
       - .:/var/www/site
+    depends_on:
+      - db
   db:
     image: postgres
     ports:
@@ -24,3 +26,13 @@ services:
       POSTGRES_DB: ${DATABASE_NAME}
       POSTGRES_USER: ${DATABASE_USER}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+  node:
+    build:
+      context: .
+      dockerfile: ./docker/node
+    volumes:
+      - .:/var/www/site:rw
+    ports:
+      - 3000:3000
+
+

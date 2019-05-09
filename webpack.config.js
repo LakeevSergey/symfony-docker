@@ -1,33 +1,42 @@
-// webpack.config.js
-var Encore = require('@symfony/webpack-encore');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const path = require('path');
 
-Encore
-    // the project directory where all compiled assets will be stored
-    .setOutputPath('public/build/')
-
-    // the public path used by the web server to access the previous directory
-    .setPublicPath('/build')
-
-    // will create public/build/app.js and public/build/app.css
-    .addEntry('app', './assets/js/app.js')
-    .addEntry('auth', './assets/js/auth.js')
-
-
-    // enable source maps during development
-    .enableSourceMaps(!Encore.isProduction())
-
-    // empty the outputPath dir before each build
-    .cleanupOutputBeforeBuild()
-
-    // show OS notifications when builds finish/fail
-    .enableBuildNotifications()
-
-    // create hashed filenames (e.g. app.abc123.css)
-    // .enableVersioning()
-
-    // allow sass/scss files to be processed
-    // .enableSassLoader()
-;
-
-// export the final configuration
-module.exports = Encore.getWebpackConfig();
+module.exports = {
+    mode: 'development',
+    entry: {
+        app: path.resolve(__dirname, 'assets', 'js', 'app.js'),
+        auth: path.resolve(__dirname, 'assets', 'js', 'auth.js')
+    },
+    output: {
+        filename: '[name].js',
+        path: path.resolve(__dirname, 'public', 'build'),
+    },
+    module: {
+        rules: [
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            },
+            {
+                test: /\.js$/,
+                use: {
+                    loader: 'babel-loader',
+                }
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'vue-style-loader',
+                    'css-loader'
+                ]
+            }
+        ]
+    },
+    plugins: [
+        new VueLoaderPlugin(),
+    ],
+    watchOptions: {
+        poll: true,
+        ignored: /node_modules/
+    }
+};

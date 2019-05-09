@@ -1,0 +1,5 @@
+FROM node
+
+WORKDIR /var/www/site
+
+CMD npm install && npm run start

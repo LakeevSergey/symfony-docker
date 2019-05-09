@@ -3,12 +3,21 @@
   "license": "MIT",
   "description": "Symfony with docker and vue",
   "repository": "https://github.com/LakeevSergey/symfony-docker.git",
-  "devDependencies": {
-    "@symfony/webpack-encore": "^0.20.1",
-    "webpack-notifier": "^1.7.0"
-  },
   "dependencies": {
-    "vue": "^2.5.17",
-    "vuex": "^3.0.1"
+    "@babel/core": "^7.4.4",
+    "css-loader": "^2.1.1",
+    "vue": "^2.6.10",
+    "vuex": "^3.1.0",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.2"
+  },
+  "scripts": {
+    "build": "webpack --mode=development",
+    "start": "webpack --watch --mode=development"
+  },
+  "devDependencies": {
+    "vue-loader": "^15.7.0",
+    "vue-template-compiler": "^2.6.10",
+    "babel-loader": "^8.0.5"
   }
 }

@@ -1,3 +1,5 @@
+require('../css/auth.css');
+
 import Vue from 'vue';
 import Vuex from 'vuex';
 import auth from '../../vue/modules/auth';
@@ -12,4 +14,4 @@ const store = new Vuex.Store({
     modules: {
     	auth
     }
-})
+});
